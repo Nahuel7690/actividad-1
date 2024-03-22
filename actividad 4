@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>navarro 4</title>
+</head>
+<body>
+    <script>
+const fechaActual = new Date();
+const anioNuevo = new Date(2025, 1, 1);
+
+function CantidadDiasAnioNuevo(fecha) {
+   const faltan = fecha - anioNuevo;
+   const dias = Math.ceil(faltan / (1000 * 60 * 60 * 24));
+   return dias;
+}
+
+function CantidadAnioNacimiento(fecha) {
+    const miEdad = new Date(2006, 3, 13);
+    const edad = (fecha.getFullYear() - miEdad.getFullYear());
+    if(fecha.getMonth() + 1 < miEdad.getMonth() && fecha.getDate() < miEdad.getDate()) {
+        edad -= 1;
+    }
+
+    return edad;
+}
+
+function CantidadMesesCampeon(fecha) {
+    const campeon = new Date(2023, 12, 8);
+    let mesesCampeon = campeon.getMonth();
+    let diasCampeon = campeon.getDate();
+    let mesesFecha = fecha.getMonth() + 1;
+    let diasFecha = fecha.getDate();
+    let restaMeses = 0;
+    let restaDias = 0;
+    if(diasCampeon > diasFecha) {
+        mesesFecha--;
+        diasFecha += 30;
+    }
+    restaDias = diasFecha - diasCampeon;
+    if(mesesCampeon > mesesFecha) {
+        aniosFecha--;
+        mesesFecha += 12;
+    }
+    restaMeses = mesesFecha - mesesCampeon;
+    
+    return restaMeses
+}
+
+document.write("Cantidad de dias para año nuevo: " + CantidadDiasAnioNuevo(fechaActual));
+document.write("<br>" + "Cantidad de años: " + CantidadAnioNacimiento(fechaActual));
+document.write("<br>" + "Cantidad de meses que somos campeones: "  + CantidadMesesCampeon(fechaActual));
+    </script>
+</body>
+</html>
