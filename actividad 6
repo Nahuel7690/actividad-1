@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width, initial-scale=1.0">
+    <title>navarro</title>
+</head>
+<body>
+    <script>
+    function esPrimo(n) {
+        if (n <= 1) return false;
+        for (let i = 2; i * i <= n; i++) {
+            if (n % i === 0) return false;
+        }
+        return true;
+    }
+    
+    function sumaDigitos(n) {
+        let suma = 0;
+        while (n > 0) {
+            suma += n % 10;
+            n = Math.floor(n / 10);
+        }
+        return suma;
+    }
+    
+    function numeros(a, b) {
+        const resultados = [];
+        for (let num = a; num <= b; num++) {
+            if (esPrimo(num) && esPrimo(sumaDigitos(num))) {
+                resultados.push(num);
+            }
+        }
+        return resultados;
+    }
+    
+    
+    const aa = prompt('Ingrese los valores de a y b separados por espacio: ');
+    const valores = aa.split(' ');
+    const a = parseInt(valores[0]);
+    const b = parseInt(valores[1]);
+    
+    const numerosEnRango = numeros(a, b);
+    document.write(numerosEnRango);
+</script>
+</body>
+</html>
