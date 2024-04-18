@@ -1,0 +1,63 @@
+function generarVectorAleatorio(num) {
+    let vector = [];
+    for (let i = 0; i < num; i++) vector.push(Math.floor(Math.random() * 32000));
+    return vector;
+}
+
+function calcularPromedio(vector) {
+    let suma = 0;
+    for(let i = 0; i < vector.length; i++) suma += vector[i];
+    return suma / vector.length;
+}
+
+
+function generarVectorMayorPromedio(vector, promedio) {
+    let prom = 0;
+    for(let i = 0; i < vector.length; i++) {
+        if(vector[i] > promedio) prom = vector[i];
+    }
+    return prom;
+}
+
+
+function contarMultiplosDosTres(vector) {
+    let contador = 0;
+    for(let i = 0; i < vector.length; i++) {
+        if(vector[i] % 2 == 0 && vector[i] % 3 == 0) contador++;
+    }
+    return contador;
+}
+
+function calcularSuma(vector) {
+    let suma = 0;
+    for(let i = 0; i < vector.length; i++) suma += vector[i];
+    return suma;
+}
+
+
+function generarVectorMultiplicadoPorDos(vector) {
+    let vector2 = [vector.length];
+    for(let i = 0; i < vector.length; i++) vector2[i] = vector[i] * 2;
+    return vector2;
+}
+
+
+const N = prompt("Ingrese el tamaño del vector: ");
+const vectorA = generarVectorAleatorio(N);
+document.write("<br>" + "Vector A:", vectorA);
+
+const promedioA = calcularPromedio(vectorA);
+document.write("<br>" + "Promedio de elementos en vector A:", promedioA);
+
+const vectorB = generarVectorMayorPromedio(vectorA, promedioA);
+document.write("<br>" + "Vector B (elementos mayores al promedio de A):", vectorB);
+
+const cantidadMultiplosDosTres = contarMultiplosDosTres(vectorA);
+document.write("<br>" + "Cantidad de elementos múltiplos de 2 y 3 en vector A:", cantidadMultiplosDosTres);
+
+const sumaVectorA = calcularSuma(vectorA);
+document.write("<br>" + "Suma de elementos en vector A:", sumaVectorA);
+
+const vectorC = generarVectorMultiplicadoPorDos(vectorA);
+document.write("<br>" + "Vector C (elementos de A multiplicados por 2):", vectorC);
+
